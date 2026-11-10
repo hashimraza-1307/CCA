@@ -17,15 +17,15 @@ elif current_meter_reading < previous_meter_reading:
 else:
   units_consumed = current_meter_reading - previous_meter_reading
 
-  # ENERGY CHARGES
-  if customer_type == 'R' and units_consumed <=100:
-    energy_charges = units_consumed * 10
-  elif customer_type == 'R' and units_consumed <=200:
-    energy_charges = (100 * 10) + (units_consumed - 100) * 15 
-  elif customer_type == 'R' and units_consumed <=300:
-    energy_charges = (100 * 10) + (100 * 15) + (units_consumed - 200) * 20
-  else:
-    energy_charges = (100 * 10) + (100 * 15) + (100 * 20) + (units_consumed - 300) * 25
+  if customer_type == "R":
+    if units_consumed <= 100:
+      energy_charges = units_consumed * 10
+    elif units_consumed <= 200:
+      energy_charges = (100 * 10) + ((units_consumed - 100) * 15)
+    elif units_consumed <= 300:
+      energy_charges = (100 * 10) + (100 * 15) + ((units_consumed - 200) * 20)
+    else:
+      energy_charges = (100 * 10) + (100 * 15) + (100 * 20) + ((units_consumed - 300) * 25)
 
   if customer_type == 'C':
     energy_charges = units_consumed * 30
