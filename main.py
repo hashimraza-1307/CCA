@@ -1,20 +1,25 @@
 # INPUTS
-customer_name = input('Enter Customer Name: ')
-customer_type = input('Enter Customer Type (R or C): ').upper()
+customer_name = input('Enter Customer Name: ').strip()
+customer_type = input('Enter Customer Type (R or C): ').upper().strip()
 previous_meter_reading = int(input('Enter Previous Month Reading: '))
 current_meter_reading = int(input('Enter Current Month Reading: '))
-bill_paid = input('Bill Paid After Due Date (Y or N): ').upper()
+bill_paid = input('Bill Paid After Due Date (Y or N): ').upper().strip()
 
 #VALIDATION 
+valid = 1
 if customer_type != 'R' and customer_type != 'C':
     print('You Can Only Type R or C')
-elif previous_meter_reading < 0:
+    valid = 0
+if previous_meter_reading < 0:
     print('Previous Reading Cant Be Negative')
-elif current_meter_reading < 0:
+    valid = 0
+if current_meter_reading < 0:
     print('Current Reading Cant Be Negative')
-elif current_meter_reading < previous_meter_reading:
+    valid = 0
+if current_meter_reading < previous_meter_reading:
     print('Current Reading Should be greater than previous reading')
-else:
+    valid = 0
+if valid == 1:
   units_consumed = current_meter_reading - previous_meter_reading
 
   if customer_type == "R":
