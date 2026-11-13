@@ -22,6 +22,7 @@ if current_meter_reading < previous_meter_reading:
 if valid == 1:
   units_consumed = current_meter_reading - previous_meter_reading
 
+  # ENERGY CHARGES
   if customer_type == "R":
     if units_consumed <= 100:
       energy_charges = units_consumed * 10
